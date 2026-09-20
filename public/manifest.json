@@ -1,0 +1,22 @@
+{
+  "short_name": "Charan AI",
+  "name": "Charan AI | Multimodal Intelligence Assistant",
+  "icons": [
+    {
+      "src": "/icon-192.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "/icon-512.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ],
+  "start_url": "/",
+  "background_color": "#07090e",
+  "theme_color": "#11141b",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "description": "Charan AI is a fast, responsive AI assistant with live search, image generation, document RAG, and multi-device mobile app capabilities."
+}
