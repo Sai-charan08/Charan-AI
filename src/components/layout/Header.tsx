@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
-import { Plus, Settings, PanelLeft, LogIn, LogOut } from 'lucide-react';
+import { Plus, Settings, PanelLeft, LogIn, LogOut, Smartphone } from 'lucide-react';
 import { ChatSettings } from '@/types/chat';
 import { useAuth } from '@/lib/auth/AuthContext';
 import { AuthModal } from '@/components/auth/AuthModal';
@@ -11,6 +11,7 @@ interface HeaderProps {
   onNewChat: () => void;
   onOpenSettings: () => void;
   onToggleSidebar: () => void;
+  onOpenInstallApp?: () => void;
   isSidebarOpen?: boolean;
   settings: ChatSettings;
   onUpdateSettings: (newSettings: Partial<ChatSettings>) => void;
@@ -20,6 +21,7 @@ export const Header: React.FC<HeaderProps> = ({
   onNewChat,
   onOpenSettings,
   onToggleSidebar,
+  onOpenInstallApp,
   isSidebarOpen = true,
   settings,
   onUpdateSettings,
@@ -56,6 +58,17 @@ export const Header: React.FC<HeaderProps> = ({
 
         {/* Right: Actions & User Auth */}
         <div className="flex items-center space-x-1.5 sm:space-x-2">
+          {onOpenInstallApp && (
+            <button
+              onClick={onOpenInstallApp}
+              className="flex items-center space-x-1.5 rounded-lg bg-amber-500/10 border border-amber-500/40 px-2.5 py-1.5 text-xs font-semibold text-amber-400 transition-all hover:bg-amber-500/20 hover:border-amber-500/60 active:scale-95 shadow-sm"
+              title="Install Charan AI Mobile & Laptop App"
+            >
+              <Smartphone className="h-3.5 w-3.5 text-amber-400 animate-pulse" />
+              <span>Install App</span>
+            </button>
+          )}
+
           <button
             onClick={onNewChat}
             className="flex items-center space-x-1.5 rounded-lg bg-[#161b22] border border-[#30363d] px-3 py-1.5 text-xs font-medium text-[#c9d1d9] transition-all hover:bg-[#21262d] hover:text-[#f0f6fc] hover:border-[#484f58] active:scale-95"

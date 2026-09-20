@@ -24,6 +24,7 @@ import { Sidebar } from '@/components/layout/Sidebar';
 import { ChatContainer } from '@/components/chat/ChatContainer';
 import { MessageInput } from '@/components/chat/MessageInput';
 import { SettingsModal } from '@/components/ui/Modal';
+import { PWAInstallModal } from '@/components/ui/PWAInstallModal';
 import { useAuth } from '@/lib/auth/AuthContext';
 
 export default function Home() {
@@ -34,7 +35,19 @@ export default function Home() {
   const [isGenerating, setIsGenerating] = useState(false);
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
   const [isSettingsOpen, setIsSettingsOpen] = useState(false);
+  const [isPWAInstallModalOpen, setIsPWAInstallModalOpen] = useState(false);
+  const [deferredPrompt, setDeferredPrompt] = useState<any>(null);
   const abortControllerRef = useRef<AbortController | null>(null);
+
+  useEffect(() => {
+    const handleBeforeInstallPrompt = (e: any) => {
+      e.preventDefault();
+      setDeferredPrompt(e);
+    };
+
+    window.addEventListener('beforeinstallprompt', handleBeforeInstallPrompt);
+    return () => window.removeEventListener('beforeinstallprompt', handleBeforeInstallPrompt);
+  }, []);
 
   // Initialize and reload sessions whenever user changes
   useEffect(() => {
@@ -378,6 +391,7 @@ export default function Home() {
             onNewChat={handleNewChat}
             onOpenSettings={() => setIsSettingsOpen(true)}
             onToggleSidebar={() => setIsSidebarOpen(!isSidebarOpen)}
+            onOpenInstallApp={() => setIsPWAInstallModalOpen(true)}
             isSidebarOpen={isSidebarOpen}
             settings={settings}
             onUpdateSettings={handleUpdateSettings}
@@ -390,6 +404,7 @@ export default function Home() {
               onSelectPrompt={(prompt) => handleSendMessage(prompt, false, [])}
               onRegenerateLast={handleRegenerateLast}
               settings={settings}
+              onOpenInstallApp={() => setIsPWAInstallModalOpen(true)}
             />
 
             <MessageInput
@@ -409,6 +424,13 @@ export default function Home() {
         onClose={() => setIsSettingsOpen(false)}
         settings={settings}
         onSaveSettings={(newSet) => handleUpdateSettings(newSet)}
+      />
+
+      {/* PWA App Installation Modal */}
+      <PWAInstallModal
+        isOpen={isPWAInstallModalOpen}
+        onClose={() => setIsPWAInstallModalOpen(false)}
+        deferredPrompt={deferredPrompt}
       />
     </div>
   );

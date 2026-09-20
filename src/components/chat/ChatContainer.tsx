@@ -12,6 +12,7 @@ interface ChatContainerProps {
   onSelectPrompt: (prompt: string) => void;
   onRegenerateLast?: () => void;
   settings?: ChatSettings;
+  onOpenInstallApp?: () => void;
 }
 
 export const ChatContainer: React.FC<ChatContainerProps> = ({
@@ -20,6 +21,7 @@ export const ChatContainer: React.FC<ChatContainerProps> = ({
   onSelectPrompt,
   onRegenerateLast,
   settings,
+  onOpenInstallApp,
 }) => {
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
@@ -36,7 +38,7 @@ export const ChatContainer: React.FC<ChatContainerProps> = ({
   return (
     <div className="flex-1 min-h-0 overflow-y-auto px-4 sm:px-8 lg:px-10 py-4 pb-28 w-full max-w-7xl mx-auto custom-scrollbar">
       {messages.length === 0 ? (
-        <WelcomeScreen onSelectPrompt={onSelectPrompt} settings={settings} />
+        <WelcomeScreen onSelectPrompt={onSelectPrompt} settings={settings} onOpenInstallApp={onOpenInstallApp} />
       ) : (
 
         <>

@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import { Sparkles, Image as ImageIcon, FileText, Globe, Code2, ArrowUpRight, ShieldCheck, Database, Layers, BookOpen, Landmark, Dumbbell, Palette, Cpu, FileSpreadsheet } from 'lucide-react';
+import { Sparkles, Image as ImageIcon, FileText, Globe, Code2, ArrowUpRight, ShieldCheck, Database, Layers, BookOpen, Landmark, Dumbbell, Palette, Cpu, FileSpreadsheet, Smartphone, Download } from 'lucide-react';
 import { Logo } from '@/components/ui/Logo';
 import { useAuth } from '@/lib/auth/AuthContext';
 import { ChatSettings } from '@/types/chat';
@@ -9,9 +9,10 @@ import { ChatSettings } from '@/types/chat';
 interface WelcomeScreenProps {
   onSelectPrompt: (promptText: string) => void;
   settings?: ChatSettings;
+  onOpenInstallApp?: () => void;
 }
 
-export const WelcomeScreen: React.FC<WelcomeScreenProps> = ({ onSelectPrompt, settings }) => {
+export const WelcomeScreen: React.FC<WelcomeScreenProps> = ({ onSelectPrompt, settings, onOpenInstallApp }) => {
   const { user } = useAuth();
   const [greetingText, setGreetingText] = useState<string>('Good day');
 
@@ -275,9 +276,34 @@ export const WelcomeScreen: React.FC<WelcomeScreenProps> = ({ onSelectPrompt, se
       </h1>
 
       {/* Subtitle */}
-      <p className="max-w-xl text-xs sm:text-sm text-gray-400 leading-relaxed mb-6">
+      <p className="max-w-xl text-xs sm:text-sm text-gray-400 leading-relaxed mb-5">
         {wsConfig.subtitle}
       </p>
+
+      {/* Install Mobile & Laptop App Banner Card */}
+      {onOpenInstallApp && (
+        <div className="mb-6 flex items-center justify-between gap-3 p-3.5 px-4 rounded-2xl bg-gradient-to-r from-amber-500/15 via-amber-500/5 to-transparent border border-amber-500/35 max-w-xl w-full shadow-xl">
+          <div className="flex items-center space-x-3 text-left">
+            <div className="p-2.5 rounded-xl bg-amber-500/20 text-amber-400 border border-amber-500/40">
+              <Smartphone className="w-5 h-5 animate-pulse text-amber-400" />
+            </div>
+            <div>
+              <h4 className="text-xs font-bold text-white flex items-center gap-1.5">
+                <span>Install Charan AI App</span>
+                <span className="text-[10px] font-semibold text-amber-400 px-1.5 py-0.2 bg-amber-500/20 rounded border border-amber-500/30">Free</span>
+              </h4>
+              <p className="text-[11px] text-gray-400">Add to your Phone or Laptop for full-screen native access</p>
+            </div>
+          </div>
+          <button
+            onClick={onOpenInstallApp}
+            className="shrink-0 flex items-center space-x-1.5 px-3.5 py-2 rounded-xl bg-amber-500 hover:bg-amber-400 text-black text-xs font-bold transition-all active:scale-95 shadow-md shadow-amber-500/20 cursor-pointer"
+          >
+            <Download className="w-3.5 h-3.5" />
+            <span>Install App</span>
+          </button>
+        </div>
+      )}
 
       {/* Studio Feature Pills Bar */}
       <div className="flex flex-wrap items-center justify-center gap-2 mb-8">
