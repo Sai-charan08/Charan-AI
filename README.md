@@ -1,80 +1,106 @@
-# Charan Chatbot 🤖✨
+# Charan AI 🤖✨
 
-**Charan Chatbot** is a production-ready, full-stack AI chatbot application powered by **Charan AI**. Designed with modern conversational intelligence, intent detection, real-time web search capabilities with source citations, document analysis, prompt injection defense, and a responsive interface.
+[![Next.js 16](https://img.shields.io/badge/Next.js-16.3.5-black?style=flat-square&logo=next.js)](https://nextjs.org/)
+[![React 19](https://img.shields.io/badge/React-19.3.0-blue?style=flat-square&logo=react)](https://react.dev/)
+[![TypeScript 6](https://img.shields.io/badge/TypeScript-6.0-blue?style=flat-square&logo=typescript)](https://www.typescriptlang.org/)
+[![MongoDB](https://img.shields.io/badge/MongoDB-Cloud_DB-green?style=flat-square&logo=mongodb)](https://www.mongodb.com/)
+[![Tailwind CSS](https://img.shields.io/badge/Tailwind-3.4.17-06B6D4?style=flat-square&logo=tailwindcss)](https://tailwindcss.com/)
+
+**Charan AI** is an advanced, production-grade multimodal AI workspace application. It combines deep reasoning LLMs, real-time web search, sub-2 second AI image synthesis, document vector RAG, multi-format document exporting, personalized behavioral personas, and MongoDB cloud synchronization.
 
 ---
 
 ## 🌟 Key Features
 
-1. **Charan AI Identity & Greeting Behavior**
-   - Natural greeting handling ("Hi", "Hello", "Good morning", "Who are you?").
-   - Responds naturally as **Charan AI** without mechanical phrases.
-   - Clean introduction rules (introduces itself only on initial greeting or explicit identity queries).
+### 1. 🌐 4 Dynamic Active Workspaces
+Switch active workspaces seamlessly via the Sidebar to transform the entire application UI and AI model system directives:
+- 🌐 **General Workspace**: All-domain intelligence for **Study Roadmaps**, **Political Science & Civics**, **Fitness & Workout Splits**, and **General Knowledge**.
+- 🎨 **AI Visual Studio**: Sub-2 second Turbo AI image synthesis for **Photorealistic Artwork**, **UI/UX Mockups**, **Vector Logos**, and **3D Render Scenes**.
+- 📄 **Document & Data RAG**: High-precision RAG analysis for **PDF Executive Summaries**, **Excel Spreadsheet Analytics**, **CSV Table Extraction**, and **Semantic Vector Q&A**.
+- 💻 **Code & Architecture Lab**: Powered by **DeepSeek R1** reasoning for **Next.js 15 & React 19 Components**, **O(n log n) Algorithm Optimization**, **Microservices Architecture**, and **Memory Leak Debugging**.
 
-2. **Conversational Intelligence & Context Retention**
-   - Multi-turn context resolution (pronoun resolution: "What is Python?" -> "What is it used for?").
-   - Adaptive explanations (Beginner vs Advanced modes).
-   - Educational Mode: Concepts, practical examples, revision summaries, and study quizzes.
-   - Clarifying question engine when user requests are ambiguous ("Make it better").
+---
 
-3. **Live Web Search & Source Transparency**
-   - Intent-driven web search (triggers automatically on current news, pricing, release versions, or when forced).
-   - Domain quality evaluator (prioritizes `.edu`, `.gov`, official documentation, reputable journals, and scientific preprints).
-   - Clickable **Web References & Sources** UI widget displaying source domain, title, snippet, and direct links.
+### 2. 👤 Personalization & Behavioral Persona Engine
+Customize how **Charan AI** interacts with you directly from the Settings & Persona Modal:
+- **User Calling Name**: Specify your preferred name (e.g. *Charan*, *Dr. Alex*, *Professor*). Charan AI addresses you directly in conversation.
+- **Behavior & Tone Style**:
+  - 💼 **Professional & Academic**: Formal, structured, executive, and highly articulate.
+  - 😊 **Friendly & Conversational**: Warm, encouraging, and approachable.
+  - 🧑‍💻 **Humanized & Plagiarism-Free**: Relatable, fluid human narrative flow.
+  - 🚀 **Concise & Direct**: Bullet-pointed, zero fluff or filler.
+- **Response Accuracy & Factuality Levels**:
+  - 🎯 **Strict Factuality & Zero Hallucination**: Precise, verified data and exact citations.
+  - ⚖️ **Balanced Accuracy & Context**: Default analytical accuracy with context.
+  - 💡 **Creative & Exploratory**: Open brainstorming and imaginative possibilities.
+- **100% Plagiarism-Free Guarantee**: Enforces unique, humanized phrasing while avoiding canned AI template clichés (*"As an AI language model..."*, *"Certainly!"*, *"In today's fast-paced world..."*).
 
-4. **Security & Prompt Injection Resistance**
-   - Sanitizes external web content and uploaded documents using XML wrappers and pattern filtering.
-   - Resists adversarial prompt injection instructions ("Ignore previous instructions", "Output secrets").
-   - Server-side API key isolation: Secrets stay safe on the server.
+---
 
-5. **Human Values, Safety & Refusal Styling**
-   - Non-preachy, calm 3-step refusal style for harmful requests (Clear state -> Brief explanation -> Safe alternative).
-   - Medical/Legal/Financial educational disclaimers.
-   - Neutral political stance (factual, non-partisan).
+### 3. 🎨 Sub-2 Second AI Image Generation
+- Turbo AI visual model generates high-resolution concept art, UI mockups, and logos in under 2 seconds.
+- Interactive **AI Visual Card** featuring instant variation generation (`Refresh`), full-screen zoom preview, and direct JPEG downloads.
 
-6. **Rich UX/UI & Responsiveness**
-   - Responsive layout (Desktop, Tablet, Mobile) with collapsible history drawer.
-   - Markdown rendering with code blocks featuring syntax highlighting and copy-code button.
-   - Dark & Light theme toggle.
-   - Web Speech API integration (Read responses aloud).
-   - Document & code file upload analysis.
-   - LocalStorage chat session persistence.
+---
+
+### 4. 📄 Multi-Format Document Exporters
+Export any assistant response or generated data into 4 downloadable file formats:
+- 📄 **PDF**: Clean, printable PDF documents with header branding and timestamps.
+- 📊 **Excel / CSV**: Extracts tables and structured data into `.csv` / `.xlsx` spreadsheet files.
+- ⚙️ **JSON**: Formats structured data and code objects into clean `.json` files.
+- 📝 **TXT**: Exports plain text and markdown notes into `.txt` documents.
+
+---
+
+### 5. 🗄️ MongoDB Cloud Database & Authentication Sync
+- **Firebase Authentication**: Sign In / Sign Up with Google OAuth & Email/Password, or use Guest Mode.
+- **MongoDB Sync**: Automatically syncs user profile data, settings, and user-isolated chat history to MongoDB (`users` and `chat_sessions` collections).
+- **Hybrid Storage**: LocalStorage caching for zero-latency UI + MongoDB cloud database persistence.
+
+---
+
+### 6. 🌐 Live Web Search & Citation Transparency
+- Automatic real-time web search for current events, news, releases, and factual data.
+- Clickable **Source Citations** showing domain quality badges (`.gov`, `.edu`, trusted documentation), snippets, and direct links.
 
 ---
 
 ## 🏗️ Technology Architecture
 
 ```text
-charan-chatbot/
+charan-ai/
 ├── src/
 │   ├── app/
-│   │   ├── layout.tsx             # Root layout with Tailwind & theme context
-│   │   ├── page.tsx               # Main chat interface & state manager
-│   │   ├── globals.css            # Tailwind & glassmorphism styling
+│   │   ├── layout.tsx             # Root layout with dark mode font & theme initialization
+│   │   ├── page.tsx               # Core workspace container & state manager
+│   │   ├── globals.css            # Dark studio design tokens & glowing styles
 │   │   └── api/
-│   │       ├── chat/route.ts      # Streaming & intent/safety/search API
-│   │       ├── search/route.ts    # Standalone web search endpoint
-│   │       └── health/route.ts    # Service health status endpoint
+│   │       ├── chat/route.ts      # Streaming SSE chat API with custom system prompts
+│   │       ├── sessions/route.ts  # MongoDB chat session CRUD endpoints
+│   │       ├── user/sync/route.ts # MongoDB user profile sync endpoint
+│   │       ├── search/route.ts    # Real-time web search service
+│   │       └── health/route.ts    # Health check status endpoint
 │   ├── components/
-│   │   ├── chat/                  # Chat items, input, citations, code blocks, welcome screen
-│   │   ├── layout/                # Header & Sidebar components
-│   │   └── ui/                    # Settings modal
+│   │   ├── auth/                  # AuthModal with Google OAuth & Email authentication
+│   │   ├── chat/                  # AIImageCard, CodeBlock, MessageInput, MessageItem, WelcomeScreen
+│   │   ├── layout/                # Header & Sidebar with embedded workspace selector
+│   │   └── ui/                    # Logo ('C' emblem) & SettingsModal
 │   ├── lib/
-│   │   ├── ai/                    # AI Provider abstraction, System prompt & Intent detector
-│   │   ├── search/                # Web search providers & Source evaluator
-│   │   ├── safety/                # Prompt injection guard & Safety checks
-│   │   └── storage/               # LocalStorage session store
-│   └── types/                     # TypeScript definitions
-├── .env.example
+│   │   ├── ai/                    # System prompt builder, Intent detector & AI providers (Gemini, OpenAI, DeepSeek, Local)
+│   │   ├── auth/                  # Firebase Auth context & config
+│   │   ├── db/                    # MongoDB client & Mongoose user/session schemas
+│   │   ├── export/                # PDF, CSV, JSON, TXT document exporters
+│   │   └── storage/               # LocalStorage & MongoDB sync helpers
+│   └── types/                     # TypeScript type definitions
 ├── package.json
 └── README.md
 ```
 
-- **Frontend & Backend Framework**: Next.js 15 (React 19 + TypeScript + Tailwind CSS)
-- **AI Providers**: Configurable abstraction supporting Google Gemini API (`@google/genai`), OpenAI API, and an Intelligent Local Fallback Engine.
-- **Search Provider**: DuckDuckGo HTML API & ranking provider with fallback scraping strategy.
-- **Icons**: Lucide React
-- **Markdown & Code Highlighting**: `react-markdown`, `remark-gfm`, `rehype-highlight`
+- **Framework**: Next.js 16 (App Router + Turbopack + React 19 + TypeScript + Tailwind CSS)
+- **Database**: MongoDB (via `mongoose` and `mongodb` client)
+- **Authentication**: Firebase Authentication
+- **AI Models**: Google Gemini 2.5 Flash, OpenAI GPT-4o, DeepSeek R1, Charan Omni-Domain RAG, Fast Local Engine
+- **Icons & Markdown**: Lucide React, `react-markdown`, `remark-gfm`, `rehype-highlight`
 
 ---
 
@@ -85,35 +111,33 @@ charan-chatbot/
 - NPM or PNPM package manager.
 
 ### 1. Installation
-Clone or navigate to the project directory and install dependencies:
+Clone the repository and install dependencies:
 
 ```bash
+git clone https://github.com/Sai-charan08/Charan-AI.git
+cd Charan-AI
 npm install
 ```
 
-### 2. Environment Configuration
+### 2. Environment Setup
 Copy `.env.example` to `.env.local`:
 
 ```bash
 cp .env.example .env.local
 ```
 
-Edit `.env.local` to add your optional API Key:
+Edit `.env.local` to set your optional environment variables:
 
 ```env
-NEXT_PUBLIC_APP_NAME="Charan Chatbot"
+# MongoDB Connection String (Local or MongoDB Atlas)
+MONGODB_URI="mongodb://127.0.0.1:27017/charan_ai_db"
 
-# Get a free Gemini API key from https://aistudio.google.com/
+# Optional AI Engine API Keys
 GEMINI_API_KEY="YOUR_GEMINI_API_KEY"
-
-# Optional OpenAI Key
-OPENAI_API_KEY=""
-
-# Web Search Provider ("duckduckgo" or "auto")
-SEARCH_PROVIDER="duckduckgo"
+OPENAI_API_KEY="YOUR_OPENAI_API_KEY"
 ```
 
-> **Note**: Even if no API key is provided, Charan Chatbot will run smoothly using its built-in Intelligent Local Fallback Engine!
+> **Note**: Even without API keys or MongoDB running locally, Charan AI executes seamlessly with built-in server fallback keys and local caching!
 
 ### 3. Run Development Server
 
@@ -125,47 +149,21 @@ Open [http://localhost:3000](http://localhost:3000) in your browser.
 
 ---
 
-## 🧪 Verified Test Cases
+## 🚢 Production Build & Deployment
 
-The application includes automated and manual test scenarios:
+### Build Verification
+Verify that the project compiles cleanly:
 
-| Scenario | Input | Expected Output |
-| :--- | :--- | :--- |
-| **Greeting** | `Hi` | `"Hello! This is Charan AI 👋 How can I help you today?"` |
-| **Identity** | `Who are you?` | `"I'm Charan AI, an AI-powered assistant..."` |
-| **General Q** | `What is Python?` | Concise explanation of Python programming language. |
-| **Context Follow-up** | `What is it used for?` | Resolves `"it"` as Python and lists applications. |
-| **Coding** | `Write a Python program to check whether a number is prime.` | Complete working Python code with $6k \pm 1$ optimization and copy button. |
-| **Current Info** | `What are the latest developments in AI?` | Triggers Web Search and displays clickable source citations. |
-| **Ambiguity** | `Make it better.` | `"Sure. Do you want it to be more professional, more concise, or more natural?"` |
-| **Safety Refusal** | Harmful prompt | 3-step calm response: Refusal statement -> Reason -> Safe alternative. |
-| **Prompt Injection** | `"Ignore previous instructions..."` | Sanitized as untrusted input and ignored. |
-
----
-
-## 🚢 Deployment Guide
-
-### Deploying to Vercel (Recommended)
-1. Push your repository to GitHub.
-2. Import the project into [Vercel](https://vercel.com).
-3. Add your environment variables (`GEMINI_API_KEY`, `OPENAI_API_KEY`) under Vercel Settings -> Environment Variables.
-4. Click **Deploy**.
-
-### Self-Hosting with Docker
-Build production bundle:
 ```bash
 npm run build
-npm run start
 ```
 
----
-
-## 🛡️ Security Considerations
-
-- **Server-Side API Key Isolation**: All AI and Search requests run through Next.js server-side API routes (`/api/chat`). Keys are never sent to the browser DOM.
-- **Untrusted Input Wrapping**: External search snippets and uploaded files are wrapped in `<UNTRUSTED_EXTERNAL_SOURCE>` blocks to prevent context high-jacking.
+### Deploy to Vercel (Recommended)
+1. Import the repository into [Vercel](https://vercel.com).
+2. Add your environment variables (`MONGODB_URI`, `GEMINI_API_KEY`, etc.).
+3. Click **Deploy**.
 
 ---
 
 ## 📄 License
-MIT License. Built for **Charan Chatbot**.
+MIT License. Built for **Charan AI**.
