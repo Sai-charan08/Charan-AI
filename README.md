@@ -1,12 +1,40 @@
 # Charan AI 🤖✨
 
+[![Live App](https://img.shields.io/badge/Live_App-thotasaicharan.vercel.app-gold?style=for-the-badge&logo=vercel)](https://thotasaicharan.vercel.app/)
 [![Next.js 16](https://img.shields.io/badge/Next.js-16.3.5-black?style=flat-square&logo=next.js)](https://nextjs.org/)
 [![React 19](https://img.shields.io/badge/React-19.3.0-blue?style=flat-square&logo=react)](https://react.dev/)
 [![TypeScript 6](https://img.shields.io/badge/TypeScript-6.0-blue?style=flat-square&logo=typescript)](https://www.typescriptlang.org/)
 [![MongoDB](https://img.shields.io/badge/MongoDB-Cloud_DB-green?style=flat-square&logo=mongodb)](https://www.mongodb.com/)
 [![Tailwind CSS](https://img.shields.io/badge/Tailwind-3.4.17-06B6D4?style=flat-square&logo=tailwindcss)](https://tailwindcss.com/)
 
-**Charan AI** is an advanced, production-grade multimodal AI workspace application. It combines deep reasoning LLMs, real-time web search, sub-2 second AI image synthesis, document vector RAG, multi-format document exporting, personalized behavioral personas, and MongoDB cloud synchronization.
+**Charan AI** is an advanced, production-grade multimodal AI workspace application available as a responsive web application and an installable native PWA app on any mobile device or laptop. It combines deep reasoning LLMs, real-time web search, sub-2 second AI image synthesis, document vector RAG, multi-format document exporting, personalized behavioral personas, and MongoDB cloud synchronization.
+
+---
+
+## 🌐 Live Production Application
+👉 **Live Web & App Link**: **[https://thotasaicharan.vercel.app/](https://thotasaicharan.vercel.app/)**
+
+Anyone can access and use **Charan AI** immediately on any device (Android, iPhone, Windows, macOS, Linux) without downloading from an app store.
+
+---
+
+## 📲 How to Install Charan AI as a Native App
+
+### 📱 1. Android Phones & Tablets
+- Open [https://thotasaicharan.vercel.app/](https://thotasaicharan.vercel.app/) in Chrome or Edge.
+- Open the left sidebar and tap **"Install App (Mobile / Laptop)"**, or tap Chrome's menu **(⋮)** → **"Install app"**.
+- Tap **Install**. The **Charan AI** golden logo will appear on your Home Screen and App Drawer.
+
+### 🍎 2. iPhone & iPad (iOS Safari)
+- Open [https://thotasaicharan.vercel.app/](https://thotasaicharan.vercel.app/) in **Safari**.
+- Tap the **Share** button at the bottom of the screen (square with arrow pointing up `⎋`).
+- Scroll down and tap **"Add to Home Screen"**.
+- Tap **Add** in the top right corner.
+
+### 💻 3. Windows Laptop / Mac / Linux (Chrome & Edge)
+- Open [https://thotasaicharan.vercel.app/](https://thotasaicharan.vercel.app/) in Chrome or Microsoft Edge.
+- Click the **Install App** icon in the address bar (or click **"Install App (Mobile / Laptop)"** in the left sidebar).
+- Click **Install** to launch Charan AI as a standalone desktop window application.
 
 ---
 
@@ -69,9 +97,16 @@ Export any assistant response or generated data into 4 downloadable file formats
 
 ```text
 charan-ai/
+├── public/
+│   ├── manifest.json          # PWA Web App Manifest
+│   ├── sw.js                  # Offline Service Worker engine
+│   ├── icon-192.png           # 192x192 PWA App Icon
+│   ├── icon-512.png           # 512x512 PWA App Icon
+│   ├── apple-touch-icon.png   # iOS Touch App Icon
+│   └── favicon.ico            # Favicon Emblem
 ├── src/
 │   ├── app/
-│   │   ├── layout.tsx             # Root layout with dark mode font & theme initialization
+│   │   ├── layout.tsx             # Root layout with font, metadata & Service Worker registration
 │   │   ├── page.tsx               # Core workspace container & state manager
 │   │   ├── globals.css            # Dark studio design tokens & glowing styles
 │   │   └── api/
@@ -86,7 +121,7 @@ charan-ai/
 │   │   ├── layout/                # Header & Sidebar with embedded workspace selector
 │   │   └── ui/                    # Logo ('C' emblem) & SettingsModal
 │   ├── lib/
-│   │   ├── ai/                    # System prompt builder, Intent detector & AI providers (Gemini, OpenAI, DeepSeek, Local)
+│   │   ├── ai/                    # System prompt builder, Intent detector & AI providers
 │   │   ├── auth/                  # Firebase Auth context & config
 │   │   ├── db/                    # MongoDB client & Mongoose user/session schemas
 │   │   ├── export/                # PDF, CSV, JSON, TXT document exporters
@@ -97,9 +132,10 @@ charan-ai/
 ```
 
 - **Framework**: Next.js 16 (App Router + Turbopack + React 19 + TypeScript + Tailwind CSS)
+- **Deployment Platform**: Vercel Cloud ([https://thotasaicharan.vercel.app/](https://thotasaicharan.vercel.app/))
 - **Database**: MongoDB (via `mongoose` and `mongodb` client)
 - **Authentication**: Firebase Authentication
-- **AI Models**: Google Gemini 2.5 Flash, OpenAI GPT-4o, DeepSeek R1, Charan Omni-Domain RAG, Fast Local Engine
+- **AI Models**: Google Gemini 2.5 Flash, OpenAI GPT-4o, DeepSeek R1, Charan Omni-Domain RAG
 - **Icons & Markdown**: Lucide React, `react-markdown`, `remark-gfm`, `rehype-highlight`
 
 ---
@@ -126,7 +162,7 @@ Copy `.env.example` to `.env.local`:
 cp .env.example .env.local
 ```
 
-Edit `.env.local` to set your optional environment variables:
+Edit `.env.local` to set your environment variables:
 
 ```env
 # MongoDB Connection String (Local or MongoDB Atlas)
@@ -137,8 +173,6 @@ GEMINI_API_KEY="YOUR_GEMINI_API_KEY"
 OPENAI_API_KEY="YOUR_OPENAI_API_KEY"
 ```
 
-> **Note**: Even without API keys or MongoDB running locally, Charan AI executes seamlessly with built-in server fallback keys and local caching!
-
 ### 3. Run Development Server
 
 ```bash
@@ -146,22 +180,6 @@ npm run dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) in your browser.
-
----
-
-## 🚢 Production Build & Deployment
-
-### Build Verification
-Verify that the project compiles cleanly:
-
-```bash
-npm run build
-```
-
-### Deploy to Vercel (Recommended)
-1. Import the repository into [Vercel](https://vercel.com).
-2. Add your environment variables (`MONGODB_URI`, `GEMINI_API_KEY`, etc.).
-3. Click **Deploy**.
 
 ---
 
