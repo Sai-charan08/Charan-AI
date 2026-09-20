@@ -1,7 +1,8 @@
 'use client';
 
-import React, { useState } from 'react';
-import { Plus, MessageSquare, Trash2, Edit2, ChevronDown, PanelLeftClose, LogOut, User as UserIcon, Sparkles, Image as ImageIcon, FileText, Code2 } from 'lucide-react';
+import React, { useState, useEffect } from 'react';
+import { Plus, MessageSquare, Trash2, Edit2, ChevronDown, PanelLeftClose, LogOut, User as UserIcon, Sparkles, Image as ImageIcon, FileText, Code2, Smartphone } from 'lucide-react';
+
 import { ChatSession, ChatSettings, WorkspaceType } from '@/types/chat';
 import { useAuth } from '@/lib/auth/AuthContext';
 import { AuthModal } from '@/components/auth/AuthModal';
@@ -37,10 +38,36 @@ export const Sidebar: React.FC<SidebarProps> = ({
   const { user, logout } = useAuth();
   const [editingId, setEditingId] = useState<string | null>(null);
   const [editTitle, setEditTitle] = useState('');
+  const [deferredPrompt, setDeferredPrompt] = useState<any>(null);
+  const [canInstallPWA, setCanInstallPWA] = useState(false);
   const [isAuthModalOpen, setIsAuthModalOpen] = useState(false);
-  const [isWorkspaceMenuOpen, setIsWorkspaceMenuOpen] = useState(false);
 
   const activeWs = settings.activeWorkspace || 'general';
+
+  useEffect(() => {
+    const handleBeforeInstallPrompt = (e: any) => {
+      e.preventDefault();
+      setDeferredPrompt(e);
+      setCanInstallPWA(true);
+    };
+
+    window.addEventListener('beforeinstallprompt', handleBeforeInstallPrompt);
+    return () => window.removeEventListener('beforeinstallprompt', handleBeforeInstallPrompt);
+  }, []);
+
+  const handleInstallPWA = async () => {
+    if (deferredPrompt) {
+      deferredPrompt.prompt();
+      const { outcome } = await deferredPrompt.userChoice;
+      if (outcome === 'accepted') {
+        setCanInstallPWA(false);
+      }
+      setDeferredPrompt(null);
+    } else {
+      alert('To install Charan AI on your phone or laptop:\n\n• On iOS (Safari): Tap Share button → "Add to Home Screen"\n• On Android (Chrome): Tap Menu (⋮) → "Install App"\n• On Laptop (Chrome/Edge): Click Install icon in address bar');
+    }
+  };
+
 
   const WORKSPACES: { id: WorkspaceType; label: string; icon: any }[] = [
     { id: 'general', label: 'General Workspace', icon: Sparkles },
@@ -211,8 +238,19 @@ export const Sidebar: React.FC<SidebarProps> = ({
           )}
         </div>
 
+        {/* PWA Install App Button */}
+        <button
+          onClick={handleInstallPWA}
+          className="mt-2 mb-2 w-full flex items-center justify-center space-x-2 py-2 px-3 rounded-xl bg-[#181b26] hover:bg-[#222736] border border-[#292e40] text-amber-400 text-xs font-semibold transition-all shadow-sm active:scale-95 cursor-pointer"
+          title="Install Charan AI as native app on Mobile or Laptop"
+        >
+          <Smartphone className="w-3.5 h-3.5 text-amber-400" />
+          <span>Install App (Mobile / Laptop)</span>
+        </button>
+
         {/* User Account Footer */}
-        <div className="pt-3 border-t border-[#1c1f28] mt-2 flex items-center justify-between">
+        <div className="pt-3 border-t border-[#1c1f28] mt-1 flex items-center justify-between">
+
           {user && !user.isAnonymous ? (
             <div className="flex items-center space-x-2 truncate">
               {user.photoURL ? (

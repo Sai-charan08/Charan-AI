@@ -22,7 +22,7 @@ export const metadata: Metadata = {
   },
   icons: {
     icon: '/favicon.ico',
-    apple: '/icon-192.png',
+    apple: '/apple-touch-icon.png',
   },
 };
 
@@ -33,9 +33,25 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="dark h-full">
+      <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              if ('serviceWorker' in navigator) {
+                window.addEventListener('load', function() {
+                  navigator.serviceWorker.register('/sw.js').catch(function(err) {
+                    console.log('ServiceWorker registration failed: ', err);
+                  });
+                });
+              }
+            `,
+          }}
+        />
+      </head>
       <body className="antialiased bg-[#07090e] text-slate-100 h-full overflow-hidden select-none selection:bg-amber-500 selection:text-black touch-manipulation">
         <AuthProvider>{children}</AuthProvider>
       </body>
     </html>
   );
 }
+

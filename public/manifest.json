@@ -5,18 +5,20 @@
     {
       "src": "/icon-192.png",
       "type": "image/png",
-      "sizes": "192x192"
+      "sizes": "192x192",
+      "purpose": "any maskable"
     },
     {
       "src": "/icon-512.png",
       "type": "image/png",
-      "sizes": "512x512"
+      "sizes": "512x512",
+      "purpose": "any maskable"
     }
   ],
   "start_url": "/",
   "background_color": "#07090e",
-  "theme_color": "#11141b",
+  "theme_color": "#07090e",
   "display": "standalone",
-  "orientation": "portrait-primary",
-  "description": "Charan AI is a fast, responsive AI assistant with live search, image generation, document RAG, and multi-device mobile app capabilities."
+  "orientation": "any",
+  "description": "Charan AI is a fast, responsive AI assistant with live search, image generation, document RAG, and multi-device mobile & desktop app capabilities."
 }
