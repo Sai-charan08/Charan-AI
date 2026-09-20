@@ -1,5 +1,5 @@
 // Charan AI Progressive Web App (PWA) Service Worker
-const CACHE_NAME = 'charan-ai-cache-v1';
+const CACHE_NAME = 'charan-ai-cache-v2';
 const STATIC_ASSETS = [
   '/',
   '/manifest.json',
